@@ -1,0 +1,25 @@
+.Futuresection {
+    background-color: rgb(242, 243, 245);
+    padding: 3rem;
+}
+
+.paperbox {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+.futuretext {
+    padding: 2rem;
+}
+
+.coursepaper {
+    text-align: left;
+    padding: 2rem;
+
+}
+
+.coursepaper h5 {
+    font-weight: bold;
+}

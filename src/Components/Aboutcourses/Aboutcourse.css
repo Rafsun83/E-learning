@@ -1,0 +1,33 @@
+.aboutcoursesection {
+    padding: 3rem;
+}
+
+.Aboutcoursepart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.Aboutcourseline {
+    text-align: left;
+}
+
+.headertopline h1 {
+    color: white;
+}
+
+.headertopline small {
+    color: white;
+}
+
+.buttonexpo {
+    background-color: rgb(254, 103, 82);
+    color: white;
+    border: none;
+    margin-top: 20px;
+}
+
+.reading img {
+    width: 600px;
+}

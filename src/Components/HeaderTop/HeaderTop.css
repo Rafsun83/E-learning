@@ -1,0 +1,38 @@
+.headertopsection {
+
+    background-color: rgb(37, 91, 79);
+}
+
+.headertop {
+    padding: 3rem;
+}
+
+.Headertoppart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.headertopline {
+    text-align: left;
+}
+
+.headertopline h1 {
+    color: white;
+}
+
+.headertopline small {
+    color: white;
+}
+
+.buttonexpo {
+    background-color: rgb(254, 103, 82);
+    color: white;
+    border: none;
+    margin-top: 20px;
+}
+
+.reading img {
+    width: 600px;
+}

@@ -1,0 +1,44 @@
+.explorehead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0rem;
+
+}
+
+.exploresort {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.css-185gdzj-MuiCardHeader-root {
+    text-align: left;
+    font-weight: bold;
+}
+
+.cardContent {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardaction {
+    justify-content: space-between;
+}
+
+.css-1rwjz6-MuiCardActions-root {
+    padding: 16px !important;
+}
+
+.cardtext {
+    background-color: rgb(255, 239, 239);
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.buttonexpo {
+    background-color: rgb(254, 103, 82);
+    color: white;
+    border: none;
+    margin-top: 20px;
+}
