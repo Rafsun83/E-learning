@@ -1,0 +1,28 @@
+.blogsection {
+    padding: 4rem;
+}
+
+.Newshead {
+    padding: 2rem 0rem;
+}
+
+.Newshead h2 {
+    font-weight: bold;
+}
+
+.Blogspaper {
+    text-align: left;
+
+}
+
+.blogsheadline {
+    padding: 10px;
+}
+
+.blogsheadline h5 {
+    text-decoration: underline;
+}
+
+.blogsheadline small {
+    text-overflow: ellipsis;
+}

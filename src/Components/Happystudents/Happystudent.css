@@ -1,0 +1,37 @@
+.studentsection {
+    background-color: rgb(242, 243, 245);
+    padding: 2rem;
+}
+
+.happystudenthead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0rem;
+}
+
+.happystudentpaper {
+    text-align: left;
+    padding: 10px;
+}
+
+.students {
+    display: flex;
+    align-items: center;
+}
+
+.Studentavatar {
+    position: relative;
+    top: -37px;
+    left: -20px;
+    z-index: 1;
+}
+
+.studentname {
+    line-height: 5px;
+    padding-top: 15px;
+}
+
+.studentname h5 {
+    font-weight: bold;
+}

@@ -8,6 +8,12 @@ import Categori from './Components/Categories/Categori';
 import Explorecours from './Components/Explorecourse/Explorecours';
 import Choose from './Components/Chooseus/Choose';
 import Information from './Components/Informations/Information';
+import Instructor from './Components/Instructors/Instructor';
+import Suitable from './Components/Suitables/Suitable';
+import Happystudent from './Components/Happystudents/Happystudent';
+import Blog from './Components/Blogs/Blog';
+import Keysupport from './Components/Keysupport/Keysupport';
+import Footers from './Components/Footer/Footers';
 
 function App() {
   return (
@@ -20,6 +26,12 @@ function App() {
       <Explorecours></Explorecours>
       <Choose></Choose>
       <Information></Information>
+      <Instructor></Instructor>
+      <Suitable></Suitable>
+      <Happystudent></Happystudent>
+      <Blog></Blog>
+      <Keysupport></Keysupport>
+      <Footers></Footers>
 
 
     </div>

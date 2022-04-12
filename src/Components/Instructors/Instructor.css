@@ -1,0 +1,26 @@
+.instructorsection {
+    padding: 4rem;
+}
+
+.instructorhead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0rem;
+}
+
+.Instructorpaperbox {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.instructorpaper {
+    text-align: center;
+    padding: 10px;
+
+}
+
+.instructorpaper h5 {
+    font-weight: bold;
+}

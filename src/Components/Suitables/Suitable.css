@@ -1,0 +1,30 @@
+.suitablesection {
+    padding: 3rem;
+}
+
+.suitablehead {
+    padding: 2rem 0rem;
+}
+
+.suitablebox {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.suitablebox1 {
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    width: 100%;
+    border-radius: 3px;
+    align-items: center;
+    text-align: left;
+    padding: 1rem;
+    gap: 5rem;
+
+}
+
+/* .suitablebox {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    padding: 2rem;
+} */
