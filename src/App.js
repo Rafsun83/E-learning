@@ -1,37 +1,58 @@
 import logo from './logo.svg';
 import './App.css';
 import Navigation from './Components/Navigations/Navigation';
-import HeaderTop from './Components/HeaderTop/HeaderTop';
-import Futurelearning from './Components/Futurelearnings/Futurelearning';
-import Aboutcourse from './Components/Aboutcourses/Aboutcourse';
-import Categori from './Components/Categories/Categori';
-import Explorecours from './Components/Explorecourse/Explorecours';
-import Choose from './Components/Chooseus/Choose';
-import Information from './Components/Informations/Information';
-import Instructor from './Components/Instructors/Instructor';
-import Suitable from './Components/Suitables/Suitable';
-import Happystudent from './Components/Happystudents/Happystudent';
-import Blog from './Components/Blogs/Blog';
-import Keysupport from './Components/Keysupport/Keysupport';
-import Footers from './Components/Footer/Footers';
+import Home from './Components/Home/Home';
+import Contact from './Components/Contact/Contact'
+import Admin from './Components/AdminsPortal/Admin';
+import Usersignup from './Components/UserSignup/Usersignup';
+import Register from './Components/Registers/Register';
+import {
+
+  BrowserRouter as Router,
+  Switch,
+  Route,
+
+} from "react-router-dom";
+import AuthProvider from './Context/AuthProvider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import NotFound from './Components/NotFound/NotFound';
+
+
+
 
 function App() {
+
   return (
     <div className="App">
 
-      <HeaderTop></HeaderTop>
-      <Futurelearning></Futurelearning>
-      <Aboutcourse></Aboutcourse>
-      <Categori></Categori>
-      <Explorecours></Explorecours>
-      <Choose></Choose>
-      <Information></Information>
-      <Instructor></Instructor>
-      <Suitable></Suitable>
-      <Happystudent></Happystudent>
-      <Blog></Blog>
-      <Keysupport></Keysupport>
-      <Footers></Footers>
+      <AuthProvider>
+        <Router>
+          <Navigation></Navigation>
+          <Switch>
+            <Route exact path="/" >
+              <Home></Home>
+            </Route>
+            <Route exact path="/home">
+              <Home></Home>
+            </Route>
+            <PrivateRoute path="/contact">
+              <Contact></Contact>
+            </PrivateRoute>
+            <Route path="/admin">
+              <Admin></Admin>
+            </Route>
+            <Route path="/usersignup">
+              <Usersignup></Usersignup>
+            </Route>
+            <Route path="/register">
+              <Register></Register>
+            </Route>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
+          </Switch>
+        </Router>
+      </AuthProvider>
 
 
     </div>

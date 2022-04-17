@@ -8,7 +8,7 @@ import { Button } from 'react-bootstrap';
 
 const Blog = () => {
     return (
-        <div className='blogsection'>
+        <div className='blogsection' id="blog">
             <div className='container'>
                 <div className='Newshead'>
                     <h2>Latest Blogs and News</h2>

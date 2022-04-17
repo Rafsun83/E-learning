@@ -10,6 +10,9 @@ import VideoCameraFrontIcon from '@mui/icons-material/VideoCameraFront';
 import WorkIcon from '@mui/icons-material/Work';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
+import Data from '../Categories/Categori.json'
+
+
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -21,7 +24,10 @@ const Item = styled(Paper)(({ theme }) => ({
     fontSize: '20px'
 }));
 
+
+
 const Categori = () => {
+
     return (
         <div className='Categorisection'>
             <div className='container'>
@@ -31,31 +37,44 @@ const Categori = () => {
                 <div>
                     <Box sx={{ width: '100%' }}>
                         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                            <Grid item xs={3}>
 
-                                <Item> <DesignServicesIcon />Design Deve</Item>
+                            {
+                                Data.map(catagori => {
+                                    return (
+
+                                        <Grid item xs={6} sm={4} md={3}>
+
+                                            <Item sx={{ padding: '1.5rem' }}> <DesignServicesIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> {catagori.name}</Item>
+                                        </Grid>
+                                    )
+                                })
+                            }
+
+                            {/* <Grid item xs={6} sm={4} md={3}>
+
+                                <Item sx={{ padding: '1.5rem' }}> <DesignServicesIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> Design Deve</Item>
                             </Grid>
-                            <Grid item xs={3}>
-                                <Item><DeveloperBoardIcon /> Development</Item>
+                            <Grid item xs={6} sm={4} md={3}>
+                                <Item sx={{ padding: '1.5rem' }}><DeveloperBoardIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> Development</Item>
                             </Grid>
-                            <Grid item xs={3}>
-                                <Item><KeyboardVoiceIcon /> Marketing</Item>
+                            <Grid item xs={6} sm={4} md={3}>
+                                <Item sx={{ padding: '1.5rem' }}><KeyboardVoiceIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> Marketing</Item>
                             </Grid>
-                            <Grid item xs={3}>
-                                <Item><ApiIcon /> It Software</Item>
+                            <Grid item xs={6} sm={4} md={3}>
+                                <Item sx={{ padding: '1.5rem' }}><ApiIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> It Software</Item>
                             </Grid>
-                            <Grid item xs={3}>
-                                <Item><VideoCameraFrontIcon /> Videography</Item>
+                            <Grid item xs={6} sm={4} md={3}>
+                                <Item sx={{ padding: '1.5rem' }}><VideoCameraFrontIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> Videography</Item>
                             </Grid>
-                            <Grid item xs={3}>
-                                <Item><WorkIcon /> Business Sys</Item>
+                            <Grid item xs={6} sm={4} md={3}>
+                                <Item sx={{ padding: '1.5rem' }}><WorkIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> Business Sys</Item>
                             </Grid>
-                            <Grid item xs={3}>
-                                <Item><AddAPhotoIcon /> Photography</Item>
+                            <Grid item xs={6} sm={4} md={3}>
+                                <Item sx={{ padding: '1.5rem' }}><AddAPhotoIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> Photography</Item>
                             </Grid>
-                            <Grid item xs={3}>
-                                <Item><QueueMusicIcon /> Music Intru</Item>
-                            </Grid>
+                            <Grid item xs={6} sm={4} md={3}>
+                                <Item sx={{ padding: '1.5rem' }}><QueueMusicIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> Music Intru</Item>
+                            </Grid> */}
                         </Grid>
                     </Box>
                 </div>

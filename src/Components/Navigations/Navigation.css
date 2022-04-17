@@ -1,3 +1,79 @@
 .navbar-light .navbar-nav .nav-link {
     color: white;
+
+}
+
+.navbar {
+    background-color: rgb(37, 91, 79);
+}
+
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 0 !important;
+    align-items: baseline;
+    gap: 2rem;
+}
+
+.catagorinav {
+    padding: 4px 7px 4px 7px;
+    border-radius: 3px;
+    color: white !important;
+    background: rgb(255, 103, 82);
+    font-size: 1rem;
+}
+
+.form-control {
+    padding-left: 28px;
+    border-radius: 2rem;
+    height: 100%;
+    width: 60%;
+}
+
+.navlist {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.navlist:hover {
+    color: rgba(0, 0, 0, .7);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.d-flex {
+    display: flex !important;
+    align-items: center;
+}
+
+.profile {
+
+    text-align: center;
+    padding: 1rem;
+}
+
+.useravatar {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.buttonProfile {
+    background-color: rgb(255, 103, 82);
+    border: none;
+    border-radius: 10px;
+}
+
+.buttonProfile:hover {
+    background-color: rgb(255, 103, 82);
+}
+
+.css-1pqm26d-MuiAvatar-img {
+    border-radius: 50%;
+}
+
+.loginbtn {
+    color: white;
 }

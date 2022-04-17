@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Web development course with UX/UI",
+        "class": "35",
+        "img": "https://yourimageshare.com/ib/LU8TLNKamD.png"
+    },
+    {
+        "id": 2,
+        "name": "Computer Networaking Course With CISCO",
+        "class": "31",
+        "img": "https://yourimageshare.com/ib/BNCIppRmQo.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Data Science and Data Analyst Course",
+        "class": "37",
+        "img": "https://yourimageshare.com/ib/b9JICR5ulo.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Graphics Design course with web design",
+        "class": "40",
+        "img": "https://yourimageshare.com/ib/CDUGihP59K.png"
+    },
+    {
+        "id": 5,
+        "name": "Software engineering course Android",
+        "class": "32",
+        "img": "https://yourimageshare.com/ib/1O0n3jAUv7.jpg"
+    },
+    {
+        "id": 6,
+        "name": "English Crash Course for IELTS",
+        "class": "38",
+        "img": "https://yourimageshare.com/ib/Pcr1hsM0bm.png"
+    }
+]

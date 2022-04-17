@@ -10,7 +10,7 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 
 const Futurelearning = () => {
     return (
-        <div className='Futuresection'>
+        <div className='Futuresection' id="pages">
             <div className='container futurelearn'>
                 <div className='futuretext'>
                     <small style={{ color: "orange", fontWeight: "bold" }}>What We Offer</small>

@@ -1,0 +1,8 @@
+.adminsection {
+    background: linear-gradient(to top right, #33ccff 8%, #ff99ff 91%);
+    height: 100vh;
+}
+
+.adminlog {
+    color: red;
+}
