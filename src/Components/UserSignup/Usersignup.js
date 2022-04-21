@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Grid, Paper, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, CircularProgress, Grid, Paper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import '../UserSignup/Usersignup.css'
@@ -11,7 +11,7 @@ import UseAuth from '../../Context/UseAuth';
 
 
 const Usersignup = () => {
-    const { loginUser } = UseAuth()
+    const { loginUser, isloading } = UseAuth()
     const [loginData, setLoginData] = useState({})
     const location = useLocation();
     const history = useHistory();
@@ -71,6 +71,9 @@ const Usersignup = () => {
 
                         </Avatar>
                         <h3>Login Your <span style={{ color: 'rgb(255,103,82)' }}>Classroom</span></h3>
+                        {
+                            isloading && <CircularProgress></CircularProgress>
+                        }
 
                     </Grid>
                     <form onSubmit={handlesubmitlogin}>

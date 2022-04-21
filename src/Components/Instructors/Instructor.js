@@ -1,5 +1,5 @@
 import { Box, CardMedia, Grid, IconButton, Paper, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import '../Instructors/Instructor.css'
@@ -7,6 +7,14 @@ import { Button } from 'react-bootstrap';
 import Data from '../Instructors/Instructor.json'
 
 const Instructor = () => {
+    const [instructor, setInstructor] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/instructor')
+            .then(res => res.json())
+            .then(data => setInstructor(data))
+
+    }, [])
     return (
         <div className='instructorsection' id="instructor">
             <div className='container'>
@@ -24,7 +32,7 @@ const Instructor = () => {
                 <div className='Instructorpaperbox'>
                     <Grid container spacing={1}>
                         {
-                            Data.map(instructor => {
+                            instructor.map(instructor => {
                                 return (
                                     <Grid item xs={12} sm={6} md={3}>
                                         <Box
@@ -44,7 +52,7 @@ const Instructor = () => {
                                                     <CardMedia
                                                         component="img"
                                                         height="194"
-                                                        image={instructor.img}
+                                                        image={`data:image/png;base64,${instructor.picture}`}
                                                         alt="Paella dish"
                                                     />
                                                     <h5> {instructor.name}</h5>

@@ -3,7 +3,7 @@ import './App.css';
 import Navigation from './Components/Navigations/Navigation';
 import Home from './Components/Home/Home';
 import Contact from './Components/Contact/Contact'
-import Admin from './Components/AdminsPortal/Admin';
+
 import Usersignup from './Components/UserSignup/Usersignup';
 import Register from './Components/Registers/Register';
 import {
@@ -16,6 +16,11 @@ import {
 import AuthProvider from './Context/AuthProvider';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import NotFound from './Components/NotFound/NotFound';
+import Admindeshboard from './Components/AdminsPortal/Admindeshboard';
+import Adminlogin from './Components/AdminsPortal/Adminlogin';
+import Courseadd from './Components/AdminsPortal/Courseadded/Courseadd';
+import Instructoradd from './Components/AdminsPortal/Courseadded/Instructorsadd/Instructoradd';
+
 
 
 
@@ -39,13 +44,22 @@ function App() {
               <Contact></Contact>
             </PrivateRoute>
             <Route path="/admin">
-              <Admin></Admin>
+              <Adminlogin></Adminlogin>
             </Route>
             <Route path="/usersignup">
               <Usersignup></Usersignup>
             </Route>
             <Route path="/register">
               <Register></Register>
+            </Route>
+            <Route path="/adminportal">
+              <Admindeshboard></Admindeshboard>
+            </Route>
+            <Route path="/courseadd">
+              <Courseadd></Courseadd>
+            </Route>
+            <Route path="/instructoradd">
+              <Instructoradd></Instructoradd>
             </Route>
             <Route path="*">
               <NotFound></NotFound>

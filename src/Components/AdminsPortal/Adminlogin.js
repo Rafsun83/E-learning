@@ -3,7 +3,7 @@ import React from 'react';
 import '../AdminsPortal/Admin.css'
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 
-const Admin = () => {
+const Adminlogin = () => {
     const avatarStyle = {
         backgroundColor: '#1bbd7e'
     }
@@ -52,4 +52,4 @@ const Admin = () => {
     );
 };
 
-export default Admin;
+export default Adminlogin;

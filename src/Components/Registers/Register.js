@@ -88,7 +88,7 @@ const Register = () => {
 
                     </Grid>
 
-                    {!isloading && <form onSubmit={handlesubmitlogin}>
+                    <form onSubmit={handlesubmitlogin}>
                         <TextField
                             label='User Name'
                             name='name'
@@ -131,7 +131,7 @@ const Register = () => {
                                 </Link>
                             </Typography>
                         </Box>
-                    </form>}
+                    </form>
 
                     <Box>
                         <Button type='submit' onClick={handleSigninWithGoogle} fullWidth variant="contained">Signin with google</Button>

@@ -13,6 +13,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import data from '../Explorecourse/Explore.json'
+import { useEffect } from 'react';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -31,6 +32,13 @@ const Explorecours = () => {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const [courses, setCourses] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/course')
+            .then(res => res.json())
+            .then(data => setCourses(data))
+    }, [])
 
     // const [courses, setCourse] = useState(data)
     return (
@@ -57,7 +65,7 @@ const Explorecours = () => {
             <div>
                 <Grid container spacing={2}>
                     {
-                        data.map(course => {
+                        courses.map(course => {
                             return (
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Card sx={{ maxWidth: 345 }}>
@@ -65,7 +73,7 @@ const Explorecours = () => {
                                         <CardMedia
                                             component="img"
                                             height="194"
-                                            image={course.img}
+                                            image={`data:image/png;base64,${course.picture}`}
                                             alt="Paella dish"
                                         />
                                         <CardHeader
@@ -79,12 +87,12 @@ const Explorecours = () => {
                                                     <MoreVertIcon />
                                                 </IconButton>
                                             }
-                                            title={course.name}
-                                            subheader="September 14, 2016"
+                                            title={course.coursename}
+                                            subheader={course.date}
                                         />
                                         <CardContent className='cardContent'>
                                             <Typography variant="body2" color="text.secondary">
-                                                <SlowMotionVideoIcon sx={{ color: 'rgb(255,103,82)' }} />  {course.class} Classes
+                                                <SlowMotionVideoIcon sx={{ color: 'rgb(255,103,82)' }} />  {course.classnumber} Classes
                                             </Typography>
                                             <Typography variant="body2" color="text.secondary">
                                                 <PersonIcon sx={{ color: 'rgb(255,103,82)' }} />  291 Students
@@ -94,9 +102,9 @@ const Explorecours = () => {
                                             </Typography>
                                         </CardContent> <Divider />
                                         <CardActions disableSpacing className='cardaction'>
-                                            <Typography variant="h6" className='cardtext'>Design</Typography>
-                                            <Typography variant="h6" className='cardtext'>Development</Typography>
-                                            <Typography variant="h6" >$29.99</Typography>
+                                            {/* <Typography variant="h6" className='cardtext'>Design</Typography> */}
+                                            <Typography variant="h6" className='cardtext'>{course.catagori}</Typography>
+                                            <Typography variant="h6" >${course.amount}</Typography>
                                         </CardActions>
 
                                     </Card>
