@@ -31,6 +31,7 @@ const Home = () => {
             <Blog></Blog>
             <Keysupport></Keysupport>
             <Footers></Footers>
+
         </div>
     );
 };

@@ -1,3 +1,7 @@
+.exploresection {
+    padding: 3rem;
+}
+
 .explorehead {
     display: flex;
     align-items: center;

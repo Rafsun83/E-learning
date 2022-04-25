@@ -1,26 +1,32 @@
 import firebaseAuthentication from "../Firebase/Firebase.initialize"
-import { getAuth, signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 firebaseAuthentication()
 const useFirebase = () => {
     const [user, setUser] = useState({})
     const [isloading, setIsloading] = useState(true)
+    const [admin, setAdmin] = useState()
+    // const [check, setCheck] = useState();
+    const [courses, setCourses] = useState([]);
 
+
+    const [authError, setAuthError] = useState('');
     const [error, setError] = useState('')
     const auth = getAuth()
     const googleProvider = new GoogleAuthProvider();
 
     const signWithgoogle = () => {
         return signInWithPopup(auth, googleProvider)
-        // .then(result => {
-        //     console.log(result)
-        //     setUser(result.user)
-        // })
-        // .catch(error => {
-        //     console.log(error.message)
-        //     setError(error.message)
-        // })
+            .then(result => {
+                saveUser(result.user.email, result.user.displayName, 'PUT')
+                console.log(result)
+                setUser(result.user)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setError(error.message)
+            })
 
     }
     const LogOut = () => {
@@ -36,21 +42,29 @@ const useFirebase = () => {
 
     }
 
-    const registerUser = (email, password, location, history) => {
+    const registerUser = (email, name, password, location, history) => {
         setIsloading(true)
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                setAuthError('')
+                const newUser = { email, displayName: name }
+                setUser(newUser)
+                //Save user in database
+                saveUser(email, name, 'POST');
+                //update profile
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
 
+                }).catch((error) => {
+
+                });
                 const destination = location?.state?.from || '/'
                 history.replace(destination)
-                // Signed in 
-                const user = userCredential.user;
-                // ...
+
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
+                setAuthError(error.message);
             })
             .finally(() => setIsloading(false));
     }
@@ -61,13 +75,11 @@ const useFirebase = () => {
 
                 const destination = location?.state?.from || '/'
                 history.replace(destination)
-                // Signed in 
-                const user = userCredential.user;
-                // ...
+
+                setAuthError('')
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                setAuthError(error.message);
             })
             .finally(() => setIsloading(false));
     }
@@ -85,14 +97,52 @@ const useFirebase = () => {
 
         })
     }, [])
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setAdmin(data.admin)
+            })
+
+
+    }, [user.email])
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/course')
+            .then(res => res.json())
+            .then(data => setCourses(data))
+    }, [])
+
+    const saveUser = (email, displayName, method) => {
+
+        const user = { email, displayName }
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+    }
+    // const checkadmin = (email, password) => {
+    //     const user = { email, password }
+    //     if (admin === user) {
+    //         setCheck(user)
+    //     }
+    // }
     return {
         user,
+        admin,
         error,
         signWithgoogle,
         LogOut,
         registerUser,
         loginUser,
-        isloading
+        isloading,
+        authError,
+        saveUser,
+        courses
     }
 
 

@@ -1,6 +1,6 @@
 import { Box, Grid, Paper, styled } from '@mui/material';
 import { fontSize } from '@mui/system';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Categories/Categori.css'
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
@@ -27,7 +27,12 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const Categori = () => {
-
+    const [catagoris, setCatagori] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/course')
+            .then(res => res.json())
+            .then(data => setCatagori(data))
+    })
     return (
         <div className='Categorisection'>
             <div className='container'>
@@ -39,12 +44,12 @@ const Categori = () => {
                         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
                             {
-                                Data.map(catagori => {
+                                catagoris.map(catagori => {
                                     return (
 
                                         <Grid item xs={6} sm={4} md={3}>
 
-                                            <Item sx={{ padding: '1.5rem' }}> <DesignServicesIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> {catagori.name}</Item>
+                                            <Item sx={{ padding: '1.5rem' }}> <DesignServicesIcon sx={{ fontSize: 30, color: 'rgb(255,103,82)' }} /> {catagori.catagori}</Item>
                                         </Grid>
                                     )
                                 })

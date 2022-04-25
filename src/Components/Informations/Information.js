@@ -5,8 +5,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import CalendarViewMonthIcon from '@mui/icons-material/CalendarViewMonth';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import UseAuth from '../../Context/UseAuth';
 
 const Information = () => {
+    const { courses } = UseAuth();
     return (
         <div className='informationsection'>
             <div className='container'>
@@ -24,7 +26,7 @@ const Information = () => {
                     </Grid>
                     <Grid item xs={3}>
                         <CalendarViewMonthIcon sx={{ fontSize: 40, color: 'rgb(37,91,79)' }} />
-                        <Typography variant="h6">735+</Typography>
+                        <Typography variant="h6">{courses.length}+</Typography>
                         <Typography>Professional Courses</Typography>
                     </Grid>
                     <Grid item xs={3}>

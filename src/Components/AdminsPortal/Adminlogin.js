@@ -1,9 +1,48 @@
 import { Box, Paper, Grid, Avatar, TextField, Button, IconButton } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import '../AdminsPortal/Admin.css'
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
+import UseAuth from '../../Context/UseAuth';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const Adminlogin = () => {
+
+    const [loginData, setLoginData] = useState({})
+    const { loginUser, admin } = UseAuth();
+    const location = useLocation();
+    const history = useHistory();
+
+
+    const handleOnchange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newloginData = { ...loginData }
+        newloginData[field] = value;
+        setLoginData(newloginData);
+
+
+    }
+    const handlesubmitlogin = (e) => {
+
+        loginUser(loginData.email, loginData.password, location, history)
+
+
+
+
+
+        // if (loginData.password === registerUser.password) {
+        //     return loginUser
+        // location, history
+
+        // }
+
+
+
+        e.preventDefault();
+    }
+
+
+
     const avatarStyle = {
         backgroundColor: '#1bbd7e'
     }
@@ -40,12 +79,27 @@ const Adminlogin = () => {
                         <h3>Admin Panel</h3>
 
                     </Grid>
-                    <TextField label='Admin Email' placeholder='Enter admin email' variant="standard" fullWidth required />
-                    <TextField label='Admin Password' type="password" placeholder='Enter admin password' variant="standard" fullWidth required />
-                    <Box sx={{ paddingTop: '1rem' }}>
-                        <Button type='submit' fullWidth variant="contained">Login</Button>
+                    <form onSubmit={handlesubmitlogin}>
+                        <TextField
+                            label='Admin Email'
+                            name="email"
+                            onChange={handleOnchange}
+                            placeholder='Enter admin email'
+                            variant="standard"
+                            fullWidth required />
+                        <TextField
+                            label='Admin Password'
+                            type="password"
+                            onChange={handleOnchange}
+                            name="password"
+                            placeholder='Enter admin password'
+                            variant="standard"
+                            fullWidth required />
+                        <Box sx={{ paddingTop: '1rem' }}>
+                            <Button type='submit' fullWidth variant="contained">Login</Button>
 
-                    </Box>
+                        </Box>
+                    </form>
                 </Paper>
             </Box>
         </div>

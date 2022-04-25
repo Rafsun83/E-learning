@@ -17,6 +17,20 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams,
+    useRouteMatch
+} from "react-router-dom";
+import { Button } from '@mui/material';
+import Courseadd from './Courseadded/Courseadd';
+import Dashboardhome from './Dashboardhome/Dashboardhome';
+import Instructoradd from './Courseadded/Instructorsadd/Instructoradd';
+import Makeadmin from './MakeAdmin/Makeadmin';
+
 
 const drawerWidth = 240;
 
@@ -40,6 +54,7 @@ const closedMixin = (theme) => ({
         width: `calc(${theme.spacing(8)} + 1px)`,
     },
 });
+
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -97,6 +112,9 @@ const Admindeshboard = () => {
         setOpen(false);
     };
 
+    let { path, url } = useRouteMatch();
+
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -126,6 +144,18 @@ const Admindeshboard = () => {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
+                <Link to={`${url}`}>
+                    <Button>Dashboard</Button>
+                </Link>
+                <Link to={`${url}/courseadd`}>
+                    <Button>Course Add</Button>
+                </Link>
+                <Link to={`${url}/instructoradd`}>
+                    <Button>Instructor Add</Button>
+                </Link>
+                <Link to={`${url}/makeadmin`}>
+                    <Button>Make Admin</Button>
+                </Link>
                 <List>
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                         <ListItemButton
@@ -176,9 +206,20 @@ const Admindeshboard = () => {
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                <Typography paragraph>
-                    <h2>hello admin panel</h2>
-                </Typography>
+                <Switch>
+                    <Route exact path={path}>
+                        <Dashboardhome></Dashboardhome>
+                    </Route>
+                    <Route path={`${path}/courseadd`}>
+                        <Courseadd></Courseadd>
+                    </Route>
+                    <Route path={`${path}/instructoradd`}>
+                        <Instructoradd></Instructoradd>
+                    </Route>
+                    <Route path={`${path}/makeadmin`}>
+                        <Makeadmin></Makeadmin>
+                    </Route>
+                </Switch>
 
             </Box>
         </Box>

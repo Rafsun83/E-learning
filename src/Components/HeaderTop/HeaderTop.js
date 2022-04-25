@@ -18,7 +18,7 @@ const HeaderTop = () => {
                         <Button className='buttonexpo' >Explore Course</Button>
                     </div>
                     <div className='reading'>
-                        <img src={read} alt="" />
+                        <img src={read} className='img-fluid' alt="" />
                     </div>
                 </div>
             </div>

@@ -1,0 +1,16 @@
+.coursedetaissection {
+    padding: 5rem;
+    background-color: rgb(242, 243, 245);
+    height: 100vh;
+}
+
+.coursedetail {
+    display: flex;
+    justify-content: space-around;
+}
+
+.content {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}

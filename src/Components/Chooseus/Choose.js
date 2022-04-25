@@ -27,7 +27,7 @@ const Choose = () => {
                 <div className='aboutcoursesection'>
                     <div className='container Aboutcoursepart'>
                         <div className='reading'>
-                            <img src={read} alt="" />
+                            <img src={read} className='img-fluid' alt="" />
                         </div>
                         <div className='Aboutcourseline'>
                             <strong style={{ color: 'rgb(255,103,82)' }}>Why Choose Us</strong>

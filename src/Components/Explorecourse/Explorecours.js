@@ -14,6 +14,8 @@ import StarHalfIcon from '@mui/icons-material/StarHalf';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import data from '../Explorecourse/Explore.json'
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import UseAuth from '../../Context/UseAuth';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -33,88 +35,98 @@ const Explorecours = () => {
         setExpanded(!expanded);
     };
 
-    const [courses, setCourses] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/course')
-            .then(res => res.json())
-            .then(data => setCourses(data))
-    }, [])
+    const { courses } = UseAuth();
+
+
 
     // const [courses, setCourse] = useState(data)
     return (
-        <div className='container' id="course">
-            <div className='explorehead'>
+        <div className='exploresection'>
+            <div className='container' id="course">
+                <div className='explorehead'>
+                    <div>
+                        <h2>Explore Popular Courses</h2>
+                    </div>
+                    <div className='exploresort'>
+                        <strong>Sort by</strong>
+                        <Button style={{ color: 'rgb(255,103,82)', backgroundColor: 'rgb(255, 239, 239)', border: 'none' }}>
+                            All Category
+                            <ExpandMore
+                                expand={expanded}
+                                onClick={handleExpandClick}
+                                aria-expanded={expanded}
+                                aria-label="show more"
+                            >
+                                <ExpandMoreIcon />
+                            </ExpandMore>
+                        </Button>
+                    </div>
+                </div>
                 <div>
-                    <h2>Explore Popular Courses</h2>
-                </div>
-                <div className='exploresort'>
-                    <strong>Sort by</strong>
-                    <Button style={{ color: 'rgb(255,103,82)', backgroundColor: 'rgb(255, 239, 239)', border: 'none' }}>
-                        All Category
-                        <ExpandMore
-                            expand={expanded}
-                            onClick={handleExpandClick}
-                            aria-expanded={expanded}
-                            aria-label="show more"
-                        >
-                            <ExpandMoreIcon />
-                        </ExpandMore>
-                    </Button>
-                </div>
-            </div>
-            <div>
-                <Grid container spacing={2}>
-                    {
-                        courses.map(course => {
-                            return (
-                                <Grid item xs={12} sm={6} md={4}>
-                                    <Card sx={{ maxWidth: 345 }}>
+                    <Grid container spacing={2}>
+                        {
+                            courses.map(course => {
+                                return (
+                                    <Grid item xs={12} sm={6} md={4}>
+                                        <Card sx={{ maxWidth: 345 }}>
 
-                                        <CardMedia
-                                            component="img"
-                                            height="194"
-                                            image={`data:image/png;base64,${course.picture}`}
-                                            alt="Paella dish"
-                                        />
-                                        <CardHeader
-                                            avatar={
-                                                <Avatar sx={{ bgcolor: " red[500]" }} aria-label="recipe">
-                                                    R
-                                                </Avatar>
-                                            }
-                                            action={
-                                                <IconButton aria-label="settings">
-                                                    <MoreVertIcon />
-                                                </IconButton>
-                                            }
-                                            title={course.coursename}
-                                            subheader={course.date}
-                                        />
-                                        <CardContent className='cardContent'>
-                                            <Typography variant="body2" color="text.secondary">
-                                                <SlowMotionVideoIcon sx={{ color: 'rgb(255,103,82)' }} />  {course.classnumber} Classes
-                                            </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                                <PersonIcon sx={{ color: 'rgb(255,103,82)' }} />  291 Students
-                                            </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                                <StarHalfIcon sx={{ color: 'rgb(255,103,82)' }} />  4.7
-                                            </Typography>
-                                        </CardContent> <Divider />
-                                        <CardActions disableSpacing className='cardaction'>
-                                            {/* <Typography variant="h6" className='cardtext'>Design</Typography> */}
-                                            <Typography variant="h6" className='cardtext'>{course.catagori}</Typography>
-                                            <Typography variant="h6" >${course.amount}</Typography>
-                                        </CardActions>
+                                            <Link to="/coursedetails">
 
-                                    </Card>
-                                </Grid>
-                            )
-                        })
-                    }
-                </Grid>
+                                                <CardMedia
+                                                    component="img"
+                                                    height="194"
+                                                    image={`data:image/png;base64,${course.picture}`}
+                                                    alt="Paella dish"
+                                                />
+                                            </Link>
+
+
+                                            <CardHeader
+                                                avatar={
+                                                    <Avatar sx={{ bgcolor: " red[500]" }} aria-label="recipe">
+                                                        R
+                                                    </Avatar>
+                                                }
+                                                action={
+                                                    <IconButton aria-label="settings">
+                                                        <MoreVertIcon />
+                                                    </IconButton>
+                                                }
+                                                title={course.coursename}
+                                                subheader={course.date}
+                                            />
+
+                                            <CardContent className='cardContent'>
+                                                <Typography variant="body2" color="text.secondary">
+                                                    <SlowMotionVideoIcon sx={{ color: 'rgb(255,103,82)' }} />  {course.classnumber} Classes
+                                                </Typography>
+                                                <Typography variant="body2" color="text.secondary">
+                                                    <PersonIcon sx={{ color: 'rgb(255,103,82)' }} />  291 Students
+                                                </Typography>
+                                                <Typography variant="body2" color="text.secondary">
+                                                    <StarHalfIcon sx={{ color: 'rgb(255,103,82)' }} />  4.7
+                                                </Typography>
+                                            </CardContent> <Divider />
+                                            <CardActions disableSpacing className='cardaction'>
+                                                {/* <Typography variant="h6" className='cardtext'>Design</Typography> */}
+                                                {/* <Typography variant="h6" className='cardtext'>{course.catagori}</Typography> */}
+                                                <Link to="/coursedetails">
+                                                    <Button >View Details</Button>
+                                                </Link>
+
+
+                                                <Typography variant="h6" >${course.amount}</Typography>
+                                            </CardActions>
+
+                                        </Card>
+                                    </Grid>
+                                )
+                            })
+                        }
+                    </Grid>
+                </div>
+                <Button variant="contained" className='buttonexpo' >Browse All Courses</Button>
             </div>
-            <Button variant="contained" className='buttonexpo' >Browse All Courses</Button>
         </div>
     );
 };

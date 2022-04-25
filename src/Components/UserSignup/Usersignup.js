@@ -11,7 +11,7 @@ import UseAuth from '../../Context/UseAuth';
 
 
 const Usersignup = () => {
-    const { loginUser, isloading } = UseAuth()
+    const { loginUser, isloading, registerUser } = UseAuth()
     const [loginData, setLoginData] = useState({})
     const location = useLocation();
     const history = useHistory();
@@ -28,6 +28,12 @@ const Usersignup = () => {
 
     const handlesubmitlogin = (e) => {
         loginUser(loginData.email, loginData.password, location, history)
+        // if (loginData.password === registerUser.password) {
+        //     return loginUser
+
+        // }
+
+
 
         e.preventDefault();
     }

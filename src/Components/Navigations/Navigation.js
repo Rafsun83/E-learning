@@ -17,7 +17,7 @@ import UseAuth from '../../Context/UseAuth';
 
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const { user, LogOut } = UseAuth()
+    const { user, LogOut, admin } = UseAuth()
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -42,8 +42,16 @@ const Navigation = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#pages">Pages</Nav.Link>
+                            <Nav.Link href="#home">
+                                <Link className='navlist' to="/home">
+                                    Home
+                                </Link>
+                            </Nav.Link>
+                            <Nav.Link href="#pages">
+                                <Link className='navlist' to="/pages">
+                                    Pages
+                                </Link>
+                            </Nav.Link>
                             <NavDropdown title="Instructor" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#instructor">Instructor</NavDropdown.Item>
                                 <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
@@ -53,15 +61,22 @@ const Navigation = () => {
                                 </NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href="#course" >
-                                Course
+                                <Link className='navlist' to="/course">
+                                    Course
+                                </Link>
                             </Nav.Link>
-                            <Nav.Link href='#blog' >
-                                Blog
+                            <Nav.Link>
+                                <Link className='navlist' to="/blog">
+                                    Blog
+                                </Link>
+                            </Nav.Link>
+                            <Nav.Link>
+
+                                <Link className='navlist' to="/contact">
+                                    Contact
+                                </Link>
                             </Nav.Link>
 
-                            <Link className='navlist' to="/contact">
-                                Contact
-                            </Link>
 
                         </Nav>
                         <Form className="d-flex">

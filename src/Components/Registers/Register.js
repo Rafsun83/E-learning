@@ -1,11 +1,11 @@
-import { Avatar, Box, Button, CircularProgress, Grid, Paper, TextField, Typography } from '@mui/material';
+import { Alert, Avatar, Box, Button, CircularProgress, Grid, Paper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import UseAuth from '../../Context/UseAuth';
 
 const Register = () => {
-    const { signWithgoogle, registerUser, isloading } = UseAuth()
+    const { signWithgoogle, registerUser, isloading, authError, saveUser } = UseAuth()
     const [loginData, setLoginData] = useState({})
 
     const location = useLocation();
@@ -15,6 +15,7 @@ const Register = () => {
     const handleSigninWithGoogle = () => {
         signWithgoogle()
             .then(result => {
+                // saveUser(loginData.email, loginData.name, 'PUT')
                 history.push(redirect_uri)
             })
     }
@@ -22,7 +23,7 @@ const Register = () => {
 
 
 
-    const handleOnchange = (e) => {
+    const handleOnblure = (e) => {
         const field = e.target.name;
         const value = e.target.value;
         const newloginData = { ...loginData }
@@ -37,7 +38,7 @@ const Register = () => {
         if (loginData.password !== loginData.confirm_password) {
             alert('your password did not match')
         }
-        registerUser(loginData.email, loginData.password, location, history)
+        registerUser(loginData.email, loginData.name, loginData.password, location, history)
 
         e.preventDefault();
     }
@@ -92,7 +93,7 @@ const Register = () => {
                         <TextField
                             label='User Name'
                             name='name'
-                            onChange={handleOnchange}
+                            onBlur={handleOnblure}
                             placeholder='Enter User Name'
                             variant="standard"
                             fullWidth required />
@@ -100,14 +101,14 @@ const Register = () => {
                             label='User Email'
                             name='email'
                             type='email'
-                            onChange={handleOnchange}
+                            onBlur={handleOnblure}
                             placeholder='Enter User email'
                             variant="standard"
                             fullWidth required />
                         <TextField
                             label='Password'
                             name='password'
-                            onChange={handleOnchange}
+                            onBlur={handleOnblure}
                             type="password"
                             placeholder='password'
                             variant="standard"
@@ -115,7 +116,7 @@ const Register = () => {
                         <TextField
                             label='Confirm Password'
                             name='confirm_password'
-                            onChange={handleOnchange}
+                            onBlur={handleOnblure}
                             type="password"
                             placeholder='Confirm password'
                             variant="standard"
@@ -124,6 +125,7 @@ const Register = () => {
                         <Box sx={{ paddingTop: '1.5rem' }}>
                             <Button type='submit' fullWidth variant="contained">Register</Button>
                         </Box>
+
                         <Box style={forgotStyle}>
                             <Typography>
                                 You have an account? <Link to="/usersignup" >
